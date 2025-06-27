@@ -60,6 +60,35 @@ def main():
     user = input("Enter username: ")
     check_user(user)
 
+---
+
+## ✅ Summary of Improvements
+- ✅ Removed `shell=True` to prevent command injection
+- ✅ Added input validation using `isalnum()`
+- ✅ Used subprocess with a safe list format instead of string commands
+
+---
+
+## 📁 Files in This Repository
+
+| File Name         | Description                                  |
+|------------------|----------------------------------------------|
+| `login.py`        | The original vulnerable script               |
+| `login_fixed.py`  | The secure version with best practices       |
+| `bandit_output.txt` | Bandit scan result (optional but recommended) |
+| `task3_report.pdf` | Full audit report with explanation (your PDF) |
+
+---
+
+## 📌 How to Run Bandit
+
+You can scan your code using Bandit like this:
+
+```bash
+pip install bandit
+bandit login.py
+
+
 if __name__ == "__main__":
     main()
 
