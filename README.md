@@ -37,3 +37,29 @@ The original code used `subprocess.call()` with `shell=True` and raw user input:
 
 ```python
 subprocess.call(f"echo Hello {username}", shell=True)
+
+This is dangerous because it lets the user inject system commands.
+
+---
+
+## ✅ Fixed (Secure) Version
+
+```python
+import subprocess
+
+def is_valid_username(username):
+    return username.isalnum()
+
+def check_user(username):
+    if not is_valid_username(username):
+        print("Invalid username! Use only letters and numbers.")
+        return
+    subprocess.call(["cmd", "/c", "echo", f"Hello {username}"])
+
+def main():
+    user = input("Enter username: ")
+    check_user(user)
+
+if __name__ == "__main__":
+    main()
+
